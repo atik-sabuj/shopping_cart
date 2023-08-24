@@ -70,26 +70,36 @@ class _ProductListScreenState extends State<ProductListScreen> {
                           ),
                           const SizedBox(width: 10,),
 
-                          Column(
-                            children: [
-                              Text(productName[index].toString(),
-                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                              ),
-                              const SizedBox(height: 5,),
-                              Text(productUnit[index].toString() +" "+r"$"+ productPrice[index].toString(),
-                                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                              ),
-                              Container(
-                                height: 35,
-                                width: 100,
-                                decoration: BoxDecoration(
-                                  color: Colors.green,
+                          Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(productName[index].toString(),
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                                 ),
-                                child: Center(
-                                  child: Text('Add to Cart', style: TextStyle(color: Colors.white),),
+                                const SizedBox(height: 5,),
+                                Text(productUnit[index].toString() +" "+r"$"+ productPrice[index].toString(),
+                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                                 ),
-                              ),
-                            ],
+                                const SizedBox(height: 5,),
+
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Container(
+                                    height: 35,
+                                    width: 100,
+                                    decoration: BoxDecoration(
+                                      color: Colors.green,
+                                      borderRadius: BorderRadius.circular(5),
+                                    ),
+                                    child: Center(
+                                      child: Text('Add to Cart', style: TextStyle(color: Colors.white),),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),
