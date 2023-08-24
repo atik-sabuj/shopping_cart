@@ -10,6 +10,15 @@ class ProductListScreen extends StatefulWidget {
 class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product List'),
+        centerTitle: true,
+        actions: [
+          Icon(Icons.shopping_bag_outlined),
+          SizedBox(width: 20,)
+        ],
+      ),
+    );
   }
 }
