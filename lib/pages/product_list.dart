@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -15,8 +16,18 @@ class _ProductListScreenState extends State<ProductListScreen> {
         title: Text('Product List'),
         centerTitle: true,
         actions: [
-          Icon(Icons.shopping_bag_outlined),
-          SizedBox(width: 20,)
+          Badge(
+            alignment: AlignmentDirectional.bottomCenter,
+            label: Text('0'),
+            child: IconButton(
+              icon: Icon(Icons.shopping_bag_outlined),
+              onPressed: () {
+                // handle button press
+              },
+            ),
+          ),
+/*          Icon(Icons.shopping_bag_outlined),
+          SizedBox(width: 20,)*/
         ],
       ),
     );
