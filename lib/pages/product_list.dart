@@ -26,8 +26,30 @@ class _ProductListScreenState extends State<ProductListScreen> {
               },
             ),
           ),
-/*          Icon(Icons.shopping_bag_outlined),
-          SizedBox(width: 20,)*/
+/*          Icon(Icons.shopping_bag_outlined),*/
+        
+          SizedBox(width: 20,)
+        ],
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 300,
+                itemBuilder: (context, index){
+              return Card(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(index.toString())
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }),
+          )
         ],
       ),
     );
