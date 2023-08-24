@@ -59,13 +59,26 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.max,
                         children: [
                           Image(
                            height: 100,
                            width: 100,
                            image: NetworkImage(productImage[index].toString()),
                           ),
-                          Text(index.toString())
+                          Column(
+                            children: [
+                              Text(productName[index].toString(),
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                              SizedBox(height: 5,),
+                              Text(productUnit[index].toString(),
+                                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ],
