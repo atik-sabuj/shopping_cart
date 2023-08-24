@@ -49,17 +49,27 @@ class _ProductListScreenState extends State<ProductListScreen> {
         children: [
           Expanded(
             child: ListView.builder(
-              itemCount: 300,
+              itemCount: productName.length,
                 itemBuilder: (context, index){
               return Card(
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Text(index.toString())
-                      ],
-                    ),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          Image(
+                           height: 100,
+                           width: 100,
+                           image: NetworkImage(productImage[index].toString()),
+                          ),
+                          Text(index.toString())
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),
