@@ -29,4 +29,10 @@ class DBHelper {
 
   }
 
+  Future<Cart> insert(Cart cart) async{
+    var dbClient = await db;
+    await dbClient!.insert('cart', cart.toMap());
+    return cart;
+  }
+
 }
