@@ -1,9 +1,10 @@
-import 'package:badges/badges.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/db/db_helper.dart';
 import 'package:shopping_cart/models/cart_model.dart';
 import 'package:shopping_cart/provider/cart_provider.dart';
+import 'package:badges/badges.dart' as badges;
 
 class ProductListScreen extends StatefulWidget {
   const ProductListScreen({Key? key}) : super(key: key);
@@ -40,7 +41,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
         centerTitle: true,
         actions: [
           Center(
-            child: Badge(
+            child: badges.Badge(
               badgeContent: Consumer<CartProvider>(
                 builder: (context, value, child){
                   return Text(value.getCounter().toString(),
@@ -48,7 +49,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                 },
 
               ),
-              animationDuration: Duration(milliseconds: 300),
+             //animationDuration: Duration(milliseconds: 300),
               child: Icon(Icons.shopping_bag_outlined),
             ),
           ),
