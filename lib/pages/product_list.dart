@@ -14,7 +14,7 @@ class ProductListScreen extends StatefulWidget {
 
 class _ProductListScreenState extends State<ProductListScreen> {
 
-  DBHelper dbHelper = DBHelper();
+  DBHelper? dbHelper = DBHelper();
 
 
   List<String> productName = ['Mango' , 'Orange' , 'Grapes' , 'Banana' , 'Chery' , 'Peach','Mixed Fruit Basket',] ;
@@ -43,7 +43,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             child: Badge(
               badgeContent: Consumer<CartProvider>(
                 builder: (context, value, child){
-                  return Text(value.getTotalPrice().toString(),
+                  return Text(value.getCounter().toString(),
                       style: TextStyle(color: Colors.white));
                 },
 
@@ -52,6 +52,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               child: Icon(Icons.shopping_bag_outlined),
             ),
           ),
+
         
           SizedBox(width: 20,)
         ],

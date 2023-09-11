@@ -20,6 +20,7 @@ class DBHelper {
     io.Directory documentDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentDirectory.path, 'cart.db');
     var db = await openDatabase(path, version: 1, onCreate: _onCreate, );
+    return db;
 
   }
 
