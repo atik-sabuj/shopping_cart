@@ -117,8 +117,21 @@ class _CartScreenState extends State<CartScreen> {
                                                     color: Colors.green,
                                                     borderRadius: BorderRadius.circular(5),
                                                   ),
-                                                  child: Center(
-                                                    child: Text('Add to Cart', style: TextStyle(color: Colors.white),),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets.all(4.0),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        InkWell(
+                                                          onTap: (){
+
+                                                          },
+                                                            child: Icon(Icons.add, color: Colors.white)),
+                                                        Text(snapshot.data![index].quantity.toString(), style: TextStyle(color: Colors.white),),
+                                                        Icon(Icons.remove, color: Colors.white),
+
+                                                      ],
+                                                    ),
                                                   ),
                                                 ),
                                               ),
