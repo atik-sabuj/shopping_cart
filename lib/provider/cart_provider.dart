@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:shopping_cart/db/db_helper.dart';
 import 'package:shopping_cart/models/cart_model.dart';
 
-class CartProvider with ChangeNotifier{
+class CartProvider with ChangeNotifier {
 
   DBHelper db = DBHelper();
   int _counter = 0;
@@ -20,51 +20,51 @@ class CartProvider with ChangeNotifier{
     return _cart;
   }
 
-  void _setPrefItems() async{
+  void _setPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('cart_item', _counter);
     prefs.setDouble('totalPrice', _totalPrice);
     notifyListeners();
   }
 
-  void _getPrefItems() async{
+  void _getPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _counter = prefs.getInt('cart_item') ?? 0;
     _totalPrice = prefs.getDouble('totalPrice') ?? 0.0;
     notifyListeners();
   }
 
-  void addTotalPrice (double productPrice){
+  void addTotalPrice (double productPrice) {
     _totalPrice = _totalPrice + productPrice;
     _setPrefItems();
     notifyListeners();
   }
 
-  void removeTotalPrice (double productPrice){
+  void removeTotalPrice (double productPrice) {
     _totalPrice = _totalPrice - productPrice;
     _setPrefItems();
     notifyListeners();
   }
 
-  double getTotalPrice (){
+  double getTotalPrice () {
     _getPrefItems();
     return _totalPrice;
   }
 
 
-  void addCounter (){
+  void addCounter () {
     _counter++;
     _setPrefItems();
     notifyListeners();
   }
 
-  void removeCounter (){
+  void removeCounter () {
     _counter--;
     _setPrefItems();
     notifyListeners();
   }
 
-  int getCounter (){
+  int getCounter () {
     _getPrefItems();
     return _counter;
   }
