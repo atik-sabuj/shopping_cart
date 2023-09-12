@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shopping_cart/db/db_helper.dart';
 import 'package:shopping_cart/models/cart_model.dart';
 import 'package:shopping_cart/provider/cart_provider.dart';
 import 'package:badges/badges.dart' as badges;
@@ -14,6 +15,9 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+
+  DBHelper? dbHelper = DBHelper();
+
   @override
   Widget build(BuildContext context) {
     final cart = Provider.of<CartProvider>(context);
@@ -81,25 +85,29 @@ class _CartScreenState extends State<CartScreen> {
                                                 Text(snapshot.data![index].productName.toString(),
                                                   style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                                                 ),
+
                                                 InkWell(
                                                     onTap: (){
-
+                                                      dbHelper!.delete(snapshot.data![index].id!);
+                                                      cart.removeCounter();
+                                                      cart.removeTotalPrice(double.parse(snapshot.data![index].productPrice.toString()));
                                                     },
                                                     child: Icon(Icons.delete)),
                                               ],
                                             ),
+
                                             const SizedBox(height: 5,),
+
                                             Text(snapshot.data![index].unitTag.toString() +" "+r"$"+ snapshot.data![index].productPrice.toString(),
                                               style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
                                             ),
+
                                             const SizedBox(height: 5,),
 
                                             Align(
                                               alignment: Alignment.centerRight,
                                               child: InkWell(
                                                 onTap: (){
-
-
 
                                                 },
                                                 child: Container(
