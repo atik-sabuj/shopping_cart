@@ -75,8 +75,18 @@ class _CartScreenState extends State<CartScreen> {
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(snapshot.data![index].productName.toString(),
-                                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(snapshot.data![index].productName.toString(),
+                                                  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                                                ),
+                                                InkWell(
+                                                    onTap: (){
+
+                                                    },
+                                                    child: Icon(Icons.delete)),
+                                              ],
                                             ),
                                             const SizedBox(height: 5,),
                                             Text(snapshot.data![index].unitTag.toString() +" "+r"$"+ snapshot.data![index].productPrice.toString(),
@@ -118,7 +128,39 @@ class _CartScreenState extends State<CartScreen> {
                 );
               }
               return Text('');
-         })
+         }),
+
+          Consumer<CartProvider>(builder: (context, value, child){
+            return Column(
+              children: [
+                ReusableWidget(
+                  title: 'Sub Total',
+                  value: r'$'+value.getTotalPrice().toString(),)
+              ],
+            );
+          }),
+        ],
+      ),
+    );
+  }
+}
+
+
+
+
+class ReusableWidget extends StatelessWidget {
+  final String title, value;
+  const ReusableWidget({required this.title, required this.value});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(title, style: Theme.of(context).textTheme.subtitle2,),
+          Text(value.toString(), style: Theme.of(context).textTheme.subtitle2,)
         ],
       ),
     );
