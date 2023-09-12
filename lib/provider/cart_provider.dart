@@ -16,7 +16,8 @@ class CartProvider with ChangeNotifier{
   Future<List<Cart>> get cart => _cart;
 
   Future<List<Cart>> getData () async {
-    _cart = db
+    _cart = db.getCartList();
+    return _cart;
   }
 
   void _setPrefItems() async{
