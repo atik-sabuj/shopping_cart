@@ -66,7 +66,7 @@ class _CartScreenState extends State<CartScreen> {
                                       Image(
                                         height: 100,
                                         width: 100,
-                                        image: NetworkImage(snapshot.data![index].toString()),
+                                        image: NetworkImage(snapshot.data![index].image.toString()),
                                       ),
                                       const SizedBox(width: 10,),
 
