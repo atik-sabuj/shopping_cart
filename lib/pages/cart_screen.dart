@@ -139,12 +139,15 @@ class _CartScreenState extends State<CartScreen> {
          }),
 
           Consumer<CartProvider>(builder: (context, value, child){
-            return Column(
-              children: [
-                ReusableWidget(
-                  title: 'Sub Total',
-                  value: r'$'+value.getTotalPrice().toString(),)
-              ],
+            return Visibility(
+              visible: value.getTotalPrice().toStringAsFixed(2) == "0.00" ? false : true,
+              child: Column(
+                children: [
+                  ReusableWidget(
+                    title: 'Sub Total',
+                    value: r'$'+value.getTotalPrice().toString(),)
+                ],
+              ),
             );
           }),
         ],
